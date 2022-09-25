@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AndroidAppliation1</string>
+    <string name="hello_message">GUTEN TAG!</string>
+    <string name="ButtonText">I\'m a button</string>
+</resources>
