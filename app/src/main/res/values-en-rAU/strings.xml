@@ -3,4 +3,9 @@
     <string name="app_name">AndroidAppliation1</string>
     <string name="hello_message">GUTEN TAG!</string>
     <string name="ButtonText">I\'m a button</string>
+    <string name="login_text">Login</string>
+    <string name="login_name">login name</string>
+    <string name="password">password</string>
+    <string name="password_text">Enter Password Here</string>
+    <string name = "what_do">What does this do?</string>
 </resources>
