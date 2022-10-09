@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_height="match_parent"
+    android:layout_width = "match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <EditText
+        android:id="@+id/editTextTextPersonName3"
+        style="@style/Widget.AppCompat.EditText"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="-1dp"
+        android:layout_toLeftOf="@id/button3"
+        android:layout_weight="1"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name" />
+
+    <ListView
+        android:id="@+id/chatWindow"
+        style="@android:style/Widget.DeviceDefault.Light.ListView"
+        android:layout_width="fill_parent"
+        android:layout_height="675dp"
+        android:layout_above="@id/button3"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_weight="1"
+        android:text="Button" />
+</RelativeLayout>

@@ -6,10 +6,12 @@
     <string name="login_name">login name</string>
     <string name="password">password</string>
     <string name="password_text">Enter Password Here</string>
-    <string name ="what_do">What does this do?</string>
-    <string name = "login_button">Login</string>
+    <string name="what_do">What does this do?</string>
+    <string name="login_button">Login</string>
     <string name="dialog_message">Do you want to close the activity</string>
     <string name="dialog_title">Closure message</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
+    <string name="Start_chat">Start Chat</string>
+    <string name="send">send</string>
 </resources>

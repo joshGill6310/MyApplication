@@ -65,7 +65,7 @@ public class ListItemsActivity extends AppCompatActivity {
                                 })
                                 .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
-                                            finish();
+
                                     }
                                 })
                                 .show();
