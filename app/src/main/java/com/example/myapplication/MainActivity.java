@@ -27,6 +27,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(toChat);
             }
         });
+        Button startTool = findViewById(R.id.button4);
+        startTool.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i(ACTIVITY_NAME,"User clicked to Toolbar");
+                Intent toTool = new Intent(MainActivity.this,TestToolbar.class);
+                startActivity(toTool);
+            }
+        });
 
     }
     @Override
@@ -51,6 +60,10 @@ public class MainActivity extends AppCompatActivity {
     }
     public void onClickMain(View view){
         Intent intent = new Intent(MainActivity.this,ListItemsActivity.class);
+        startActivityForResult(intent,10);
+    }
+    public void onClickTool(View view){
+        Intent intent = new Intent(MainActivity.this,TestToolbar.class);
         startActivityForResult(intent,10);
     }
     public void onActivityResult(int requestCode, int responseCode, Intent Data){

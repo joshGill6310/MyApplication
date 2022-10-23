@@ -15,4 +15,6 @@
     <string name="cancel">Cancel</string>
     <string name="Start_chat">Start Chat</string>
     <string name="send">send</string>
+    <string name="toolButton">to Toolbar</string>
+    <string name="pick_color">Do You want to go back?</string>
 </resources>
