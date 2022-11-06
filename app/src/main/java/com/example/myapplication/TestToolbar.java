@@ -66,30 +66,7 @@ public class TestToolbar extends AppCompatActivity {
                 dialog.show();
                 break;
             case R.id.action_three:
-                Log.d(ACTIVITY_NAME, "Option 3 Selected");
-                AlertDialog.Builder customDialog =
-                        new AlertDialog.Builder(TestToolbar);
-                // Get the layout inflater
-                LayoutInflater inflater = TestToolbar.getLayoutInflater();
-                final View view = inflater.inflate(R.layout.custom_dialog, null);
-                customDialog.setView(view)
-                        .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int id) {
-                                EditText edit = view.findViewById(R.id.dialog_message_box);
-                                String message = edit.getText().toString();
-                                Snackbar snackbar = Snackbar.make(view,message,Snackbar.LENGTH_LONG);
-
-                            }
-                        })
-                        .setNegativeButton(R.string.cancel,
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                    }
-                                });
-                Dialog dialog2 = customDialog.create();
-                dialog2.show();
-                break;
+                case3();
             case R.id.action_four:
                 String About = "Version 1.0, by Joshua Gill";
                 Toast toast = Toast.makeText(this,About,Toast.LENGTH_LONG);
@@ -106,5 +83,28 @@ public class TestToolbar extends AppCompatActivity {
     public void onClickFAB(View view) {
         Snackbar.make(view, "Well hello there", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show();
+    }
+    public void case3() {
+        AlertDialog.Builder customDialog =
+                new AlertDialog.Builder(TestToolbar);
+        // Get the layout inflater
+        LayoutInflater inflater = TestToolbar.getLayoutInflater();
+        final View view = inflater.inflate(R.layout.custom_dialog, null);
+        customDialog.setView(view)
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        EditText edit = view.findViewById(R.id.dialog_message_box);
+                        String message = edit.getText().toString();
+                        Snackbar snackbar = Snackbar.make(findViewById(R.id.action_three),message,Snackbar.LENGTH_LONG);
+                    }
+                })
+                .setNegativeButton(R.string.cancel,
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                            }
+                        });
+        Dialog dialog = customDialog.create();
+        dialog.show();
     }
 }

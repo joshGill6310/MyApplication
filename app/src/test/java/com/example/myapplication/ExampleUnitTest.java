@@ -19,6 +19,6 @@ public class ExampleUnitTest {
     }
     @Test
     public void onClickSendsMessage(){
-    ChatWindow.class.
+
     }
 }
