@@ -62,6 +62,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this,ListItemsActivity.class);
         startActivityForResult(intent,10);
     }
+    public void onClickWeather(View view){
+        Intent intent = new Intent(MainActivity.this,WeatherForcast.class);
+        startActivityForResult(intent,10);
+    }
     public void onClickTool(View view){
         Intent intent = new Intent(MainActivity.this,TestToolbar.class);
         startActivityForResult(intent,10);

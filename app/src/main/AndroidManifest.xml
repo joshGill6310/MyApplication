@@ -6,7 +6,7 @@
     <uses-feature
         android:name="android.hardware.camera"
         android:required="true" />
-
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -17,6 +17,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
+        <activity
+            android:name=".WeatherForcast"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
 
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
@@ -30,8 +37,9 @@
             android:name=".ListItemsActivity"
             android:exported="true"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".TestToolbar"
-            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".TestToolbar"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".LoginActivity"
             android:exported="true">
@@ -46,6 +54,5 @@
             android:exported="true"
             android:parentActivityName=".LoginActivity" />
     </application>
-
 
 </manifest>
