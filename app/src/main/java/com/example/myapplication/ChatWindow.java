@@ -1,17 +1,21 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -40,7 +44,9 @@ public class ChatWindow extends AppCompatActivity {
         addMessages();
 
         print("help me");
-
+        boolean isLoaded;
+        if(findViewById(R.id.frameRightOfChat)==null) isLoaded=false;
+        else isLoaded = true;
         ChatAdapter messageAdapter =new ChatAdapter( this );
         listView.setAdapter(messageAdapter);
         sendButton.setOnClickListener(new View.OnClickListener() {
@@ -56,6 +62,35 @@ public class ChatWindow extends AppCompatActivity {
                 value.put(ChatDatabaseHelper.KEY_MESSAGE,message);
                 BaseHolder.insert(ChatDatabaseHelper.TABLE_Of_My_ITEMS,null,value);
                 messageAdapter.notifyDataSetChanged();
+            }
+        });
+        ListView listView1 = findViewById(R.id.chatWindow);
+        listView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                TextView tV = (TextView) adapterView.getItemAtPosition(i);
+                Bundle args = new Bundle();
+                String text = tV.getText()+"";
+                args.putLong("ID",l);
+                args.putCharSequence("Message",text);
+                if(isLoaded==true){
+
+                    MessageFragment mf = new MessageFragment();
+                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+
+
+
+                    mf.setArguments(args);
+                    ft.add(R.id.frameRightOfChat,mf);
+                    ft.commit();
+                }
+                else{
+                    Intent toMessageDetails = new Intent(ChatWindow.this,MessageDetails.class);
+                    toMessageDetails.putExtra("ID",l);
+                    toMessageDetails.putExtra("Message",text);
+                    startActivityForResult(toMessageDetails,200);
+                }
+
             }
         });
     }
@@ -79,6 +114,7 @@ public class ChatWindow extends AppCompatActivity {
 
     }
     private class ChatAdapter extends ArrayAdapter<String> {
+        private Cursor checker;
         public ChatAdapter(Context ctx){
             super(ctx,0);
         }
@@ -87,6 +123,16 @@ public class ChatWindow extends AppCompatActivity {
         }
         public String getItem(int position){
             return chatHistory.get(position);
+        }
+        @SuppressLint("Range")
+        public Long getItemID(int position){
+            ChatDatabaseHelper data = new ChatDatabaseHelper(getContext());
+            pointer.moveToPosition(position);
+            if(pointer.getColumnIndex(ChatDatabaseHelper.KEY_ID)==-1){
+                Long l = Long.valueOf(-1);
+                return l;
+            }
+            else return pointer.getLong(pointer.getColumnIndex(ChatDatabaseHelper.KEY_ID));
         }
         public View getView(int position, View convertView, ViewGroup parent){
             LayoutInflater inflater = ChatWindow.this.getLayoutInflater();
